@@ -41,9 +41,8 @@ To Use:
 // new to v7: Initialize jsPsych, this initialization should happen before the rest of the jsPsych code is called
 var jsPsych = initJsPsych({});
 
-// Set the seed for reproducible experiment runs. Use a different seed for a different fixed randomized order.
-// If trials should be kept constant across runs, uncomment next line.
-// jsPsych.randomization.setSeed('squaredtasks');
+// Trials are run in the same order for all participants to minimize performance variation due to trial order
+jsPsych.randomization.setSeed('squaredtasks');
 
 // IMPORTANT: THESE ARE THE ONLY VARIABLES THAT SHOULD BE MANUALLY CHANGED (if at all), the rest should be adaptive
 var practice_duration = 30000; // duration of practice
