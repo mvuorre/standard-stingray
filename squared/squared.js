@@ -64,19 +64,10 @@ var enter_fullscreen = {
 	fullscreen_mode: true
 }
 
-var get_participant_id = {
-	type: jsPsychSurveyText,
-	questions: [
-		{prompt: 'Please enter the participant ID:', required: true, name: 'participant_id'}
-	],
-	on_finish: function(data) {
-		jsPsych.data.addProperties({
-			  participant_id: data.response.participant_id
-		  })
-
-		subject = data.response.participant_id;
-	  }
-}
+var pid = jsPsych.data.getURLVariable(pid);
+jsPsych.data.addProperties({
+	pid: pid
+})
 
 // get_location: Introduces option to run program (and save files) locally or to run it online and collect data through a platform
 // Comment out get_location object if implementing a default of running the task online
@@ -1116,5 +1107,5 @@ var preload = {
 	images: [al, ar, ml_fr, mr_fl, rarr, larr]
 }
 
-timeline.push(preload, get_participant_id, get_location, welcome, enter_fullscreen, stroop_task, flanker_task, simon_task, conclusion, exit_fullscreen);
+timeline.push(preload, get_location, welcome, enter_fullscreen, stroop_task, flanker_task, simon_task, conclusion, exit_fullscreen);
 jsPsych.run(timeline);
