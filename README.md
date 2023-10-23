@@ -2,9 +2,7 @@
 
 Cognitive testing battery in jsPsych, forked from <https://github.com/vrtliceralde/squared_jspsych> under CC BY NC SA 4.0.
 
-Original tasks described and tested in [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408).
-
-When using this task, please cite Burgoyne et al. (2023) and this version of the task as follows:
+Original tasks described and tested in [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408). Citation for the original jsPsych implementation:
 
 Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.8313315
 
@@ -21,57 +19,13 @@ Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control
 
 This is a [jsPsych](https://www.jspsych.org/7.3/) implementation of the Squared tasks of executive attention that were developed by [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408) ([Engle Lab Website](https://englelab.gatech.edu/attentioncontroltasks); [OSF](https://osf.io/7q598/)).
 
-There are two directories: `squared` and `jspsych`. The `squared` directory is the main directory, and it houses the html executable file to be used to run the Squared tasks (i.e., `squared.html`). The `jspsych` directory (v7.3.1) contains all the plugins that are locally referenced in the
-`squared/squared.html` file; these plugins are necessary for the program to work. If the user wants the reference to the plugins to be online instead of local, the user can modify the html file to reference the CDN-hosted scripts online (see documentation on jsPsych website). The advantage of referencing the plugins online is that the user will only need to keep the `squared` directory to run the program successfully; the disadvantage is that the program may not run if the servers are down. To be safer, local reference to the jsPsych plugins is implemented here.
-
 Descriptions in Burgoyne et al. are slightly different from the implementation in the program available on the Engle Lab website, VL decided to stick to Burgoyne et al. description because it gave participants feedback at the end and provided reason for why the correct response was correct
 
 For each task, a 30-second practice block is given, followed by a 90-second main block. For the Stroop squared: Participants have to determine the color of the prompt and click on the word whose meaning corresponds to the prompt's color. For the Flanker squared: Participants are given a choice of two arrow sets and they have to click the arrow set whose center arrow points in the same direction as the flanking arrows in the prompt. For the Simon squared: Participants are shown an arrow prompt at the left or right of the screen, and they have to click on the word that indicates the direction that the arrow prompt is pointing (not its location).
 
-## Content
-
-The contents of the `jspsych` directory can be directly obtained [here](https://www.github.com/jspsych/jspsych/releases/latest/download/jspsych.zip).
-
-The contents of `squared` directory are as follows:
-
-| File | Description |
-| ---- | ----------- |
-| `squared.html` | The main executable file. Could be opened using any web browser. |
-| `squared.js`   | The main jsPsych script. Contains the implementation of the tasks, and this file is called in `squared.html` |
-| `squared.css`	 | CSS script containing formatting options to keep interface as similar to the original Burgoyne et al. programs |
-| `*.png`        | Image files for Flanker and Simon tasks that are called in `squared.js` |
-
-## How to run
-
-The user has the option to run the program locally or through an online experiment hosting site (e.g., cognition.run, gorilla.sc).
-
-At start-up (after collecting participant ID), the user will be prompted on whether the program is being run online or locally. If `local` is selected, the participant's data will be saved and downloaded into the local console. If `online` is selected, the hosting site will keep the data. If the program is run online and local is selected, the program will save the data and downloaded into the remote participant's console (which is not ideal).
-
-***If the program is run locally, but `online` is selected, data will NOT be saved.***
-
-You can implement a default of running the task online by commenting out the `get_location` object in `squared.js`.
-
-### Local
-
-If the user decides to collect data locally (e.g., lab computer; where the data is saved to the computer that runs the task), copying the entire `squared_jspsych` folder somewhere in the local computer and opening the `squared.html` file using any web browser should suffice. There is no installation process required other than downloading this folder/repository. Bookmarking the location of the `squared.html` file on your favorite web browser is recommended for easy access.
-
-### Online (cognition.run, gorilla.sc)
-
-If the user decides to collect data using an experiment hosting site, the user will need to:
-
-1. Copy and paste the entire contents of the `squared.js` file onto the main script window
-2. Upload all relevant companion files for the hosting site (e.g., the `squared.css`, all `*.png` files, and relevant plugin files from the `jspsych` directory if needed)
-3. Make sure that the hosting site calls on both the main `.js` script in the main window and the companion files correctly
-	
-[Gorilla.sc](https://gorilla.sc) requires further ad hoc modifications to their default settings for the uploaded components to work, and it looks like they're sundowning the "Code Editor" functionality (on which this version is implememented) into a "Legacy" object, so if you're finding difficulties making the necessary modifications for Gorilla, please email Van to send you a Gorilla clone of the tasks.
-
-## Randomizing trial order / Keeping trial order constant
-
-Trials are randomized in the Engle Lab program (based on a version downloaded on 2023-02-01), so the default setting here is also to randomize trials across runs. However, the user may be interested in keeping the trial order constant to reduce variability in performance that's not due to individual differences in attention control (e.g., variaiblity from trial order). In this case, the user can uncomment the `jsPsych.randomization.setSeed('squaredtasks');` line to set the seed for randomization and keep one random trial order constant across runs of this program.
-
 ## Output
 
-After doing each task, the program outputs task-specific `.csv` files (i.e., one each for Stroop, Flanker, and Simon) that contain trial-level information about the participant's responses. If run online, the output will all be combined into one `.csv` file.
+After each task (Stroop, Flanker, Simon), a .csv file is saved to OSF
 
 All `.csv` files contain the following variables:
 
@@ -84,7 +38,7 @@ All `.csv` files contain the following variables:
 | `trial_index`	|		numeric | cumulative count of each plugin change shown to the participant |
 | `time_elapsed`	|		numeric | system-recorded timestamp at the trial |
 | `internal_node_id`	|	string | jsPsych-specific marker of the location of the current trial in the experiment sequence |
-| `participant_id`	|		string | unique identifier for participant, collected at start-up |
+| `pid`	|		string | unique identifier for participant, collected at start-up |
 | `task`	|			string | one of the three squared tasks; `stroop`, `flanker`, `simon` |
 | `block_trial_count`	|	numeric | cumulative trial count within the practice and main blocks; refer to this variable for what counts as a "trial" in the task; `0`: the task timed out at that trial |
 | `practice`	|		numeric | indicator for whether the trial was seen in the practice block; `0`: main block, `1`: practice block |
