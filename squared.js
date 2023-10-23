@@ -1070,25 +1070,28 @@ var preload = {
 	images: [al, ar, ml_fr, mr_fl, rarr, larr]
 }
 
+const now = new Date()
+now_iso = now.toISOString()
+
 const save_data_stroop = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
-	filename: `${pid}-stroop.csv`,
+	filename: `$stroop-${pid}-(${now_iso}).csv`,
 	data_string: ()=> jsPsych.data.get().filter({task: "stroop"}).csv()
 };
 const save_data_flanker = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
-	filename: `${pid}-flanker.csv`,
+	filename: `flanker-${pid}-(${now_iso}).csv`,
 	data_string: ()=> jsPsych.data.get().filter({task: "flanker"}).csv()
 };
 const save_data_simon = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
-	filename: `${pid}-simon.csv`,
+	filename: `simon-${pid}-(${now_iso}).csv`,
 	data_string: ()=> jsPsych.data.get().filter({task: "simon"}).csv()
 };
 
