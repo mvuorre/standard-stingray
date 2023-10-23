@@ -433,10 +433,10 @@ var stroop_task = { timeline: [intro_stroop, threetwoone, block_stroop_practice,
 //    - mr_fl:  mid right, flankers left
 //	  - ml_fr:  mid left, flankers right
 
-const ar = "ar.PNG";
-const al = "al.PNG";
-const mr_fl = "mr_fl.PNG";
-const ml_fr = "ml_fr.PNG";
+const ar = "assets/ar.PNG";
+const al = "assets/al.PNG";
+const mr_fl = "assets/mr_fl.PNG";
+const ml_fr = "assets/ml_fr.PNG";
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_flanker)
 var stimuli_flanker = [
@@ -751,8 +751,8 @@ var flanker_task = {timeline: [intro_flanker, threetwoone, block_flanker_practic
 //		f. block_main_simon -> main task
 //		g. conclusion_simon -> reports final score to participant
 
-const rarr = "rarr.PNG";
-const larr = "larr.PNG";
+const rarr = "assets/rarr.PNG";
+const larr = "assets/larr.PNG";
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_simon)
 var stimuli_simon = [
