@@ -14,8 +14,7 @@ var practice_duration = 30000; // duration of practice
 var main_duration = 90000; // duration of main task
 
 //general variables for use throughout the experiment
-var online; // Numeric: 0 indicating that task is being run locally, 1 indicating that the task is being run through a platform
-var subject; // Subject ID
+var online = 0; // Numeric: Is task run online? [testing]
 var total_stroop = 0; // track total Stroop score
 var total_flanker = 0; // track total Flanker score
 var total_simon = 0; // track total Simon score
@@ -64,25 +63,11 @@ var enter_fullscreen = {
 	fullscreen_mode: true
 }
 
-var pid = jsPsych.data.getURLVariable(pid);
+// Participant id
+var pid = jsPsych.data.getURLVariable("pid");
 jsPsych.data.addProperties({
 	pid: pid
-})
-
-// get_location: Introduces option to run program (and save files) locally or to run it online and collect data through a platform
-// Comment out get_location object if implementing a default of running the task online
-var get_location = {
-	type: jsPsychSurveyMultiChoice,
-	questions: [{
-			prompt: "Where are you running the task?",
-			name: "client",
-			options: ["Online (cognition.run, gorilla.sc, MTurk link)", "Local (Lab computer files)"],
-			required: true
-		}],
-	on_finish: function(data) {
-		online = data.response.client == "Online (cognition.run, gorilla.sc, MTurk link)" ? 1 : 0;
-	}
-}
+});
 
 var welcome = {
 	type: jsPsychHtmlButtonResponse,
@@ -283,8 +268,6 @@ var createStroopBlock = function(stroop) {
 					block_trial_count = 0;
 					timeout = 1;
 
-					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
 
@@ -320,8 +303,6 @@ var createStroopBlock = function(stroop) {
 			}
 
 			data.score_after_trial = total_stroop;
-
-			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
 
@@ -419,11 +400,7 @@ var conclusion_stroop = {
 			score_4: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
 			meanrt_4: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
 		})
-
-		if (online == 0) {
-			var filename = "data_squared-stroop_" + subject + ".csv";
-			jsPsych.data.get().filter({task: "stroop"}).localSave('csv', filename);
-		}
+		
 		clearTimeout(end_timer);
 	}
 }
@@ -621,8 +598,6 @@ var createFlankerBlock = function(flanker) {
 					block_trial_count = 0;
 					timeout = 1;
 
-					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
 
@@ -655,8 +630,6 @@ var createFlankerBlock = function(flanker) {
 			}
 
 			data.score_after_trial = total_flanker;
-
-			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
 
@@ -752,10 +725,6 @@ var conclusion_flanker = {
 			meanrt_4: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
 		})
 
-		if (online == 0) {
-			var filename = "data_squared-flanker_" + subject + ".csv";
-			jsPsych.data.get().filter({task: "flanker"}).localSave('csv', filename);
-		}
 		clearTimeout(end_timer);
 	}
 }
@@ -934,8 +903,6 @@ var createSimonBlock = function(simon) {
 					block_trial_count = 0;
 					timeout = 1;
 
-					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
 
@@ -969,8 +936,6 @@ var createSimonBlock = function(simon) {
 			}
 
 			data.score_after_trial = total_simon;
-
-			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
 
@@ -1067,10 +1032,6 @@ var conclusion_simon = {
 			meanrt_4: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
 		})
 
-		if (online == 0) {
-			var filename = "data_squared-simon_" + subject + ".csv";
-			jsPsych.data.get().filter({task: "simon"}).localSave('csv', filename);
-		}
 		clearTimeout(end_timer);
 	}
 }
@@ -1107,5 +1068,40 @@ var preload = {
 	images: [al, ar, ml_fr, mr_fl, rarr, larr]
 }
 
-timeline.push(preload, get_location, welcome, enter_fullscreen, stroop_task, flanker_task, simon_task, conclusion, exit_fullscreen);
+const save_data_stroop = {
+	type: jsPsychPipe,
+	action: "save",
+	experiment_id: "5IbiiwM4I33E",
+	filename: `${pid}-stroop.csv`,
+	data_string: ()=> jsPsych.data.get().filter({task: "stroop"}).csv()
+};
+const save_data_flanker = {
+	type: jsPsychPipe,
+	action: "save",
+	experiment_id: "5IbiiwM4I33E",
+	filename: `${pid}-flanker.csv`,
+	data_string: ()=> jsPsych.data.get().filter({task: "flanker"}).csv()
+};
+const save_data_simon = {
+	type: jsPsychPipe,
+	action: "save",
+	experiment_id: "5IbiiwM4I33E",
+	filename: `${pid}-simon.csv`,
+	data_string: ()=> jsPsych.data.get().filter({task: "simon"}).csv()
+};
+
+timeline.push(
+	preload, 
+	welcome, 
+	enter_fullscreen, 
+	stroop_task, 
+	save_data_stroop,
+	flanker_task, 
+	save_data_flanker,
+	simon_task, 
+	save_data_simon,
+	conclusion, 
+	exit_fullscreen
+);
+
 jsPsych.run(timeline);
