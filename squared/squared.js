@@ -1,44 +1,9 @@
-/////////////////////////////////////
-// ATTENTION CONTROL SQUARED TASKS //
-////////////////////////////////////
-
-/*
-2023-02-01: Made by Van Liceralde on jsPsych v7.3
-			- Descriptions in Burgoyne et al. are slightly different from the implementation in the program available on the Engle Lab website, VL
-			  decided to stick to Burgoyne et al. description because it gave participants feedback at the end and provided reason for why the correct
-			  response was correct
-
-References:
-Liceralde, V.R.T. & Burgoyne, A.P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.8313315
-
-Burgoyne, A.P., Tsukahara, J.S., Mashburn, C.A., Pak, R., & Engle, R.W. (2023). Nature and measurement of attention control. Journal of Experimental Psychology: General. 152(8), 2369-2402. https://doi.org/10.1037/xge0001408
-(under review when task was first ported by VL)
-
-/*
-Overview:
-This is a jsPsych implementation of the new squared tasks of attention control from Burgoyne et al.
-For each task, a 30-second practice block is given, followed by a 90-second main block.
-For the Stroop squared: Participants have to determine the color of the prompt and click on the word
-whose meaning corresponds to the prompt's color. For the Flanker squared: Participants are given a
-choice of two arrow sets and they have to click the arrow set whose center arrow points in the same
-direction as the flanking arrows in the prompt. For the Simon squared: Participants are shown an
-arrow prompt at the left or right of the screen, and they have to click on the word that indicates
-the direction that the arrow prompt is pointing (not its location).
-
-To Use:
-1. Load this js file in your html file (here, it's squared.html).
-	a. On Cognition.run / Gorilla.sc, you may have to copy and paste this entire file onto the main syntax/code page
-	   and have Cognition.run or Gorilla.sc call on the main syntax code instead and possibly make necessary edits
-	   for the specific platform
-2. Upload all companion files (.css and .img files)
-3. Reference the css in your html file (here, it's squared.css)
-*/
+// ATTENTION CONTROL SQUARED TASKS
 
 ///////////////////////////////////////////
 // DEFINE TIMELINE AND GENERAL VARIABLES //
 ///////////////////////////////////////////
 
-// new to v7: Initialize jsPsych, this initialization should happen before the rest of the jsPsych code is called
 var jsPsych = initJsPsych({});
 
 // Trials are run in the same order for all participants to minimize performance variation due to trial order

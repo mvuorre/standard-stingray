@@ -1,8 +1,8 @@
-# Squared tasks of attention control for jsPsych
+# standard-stingray
 
-For questions about this specific implementation, please email Van at vrtliceralde at gmail.
+Cognitive testing battery in jsPsych, forked from <https://github.com/vrtliceralde/squared_jspsych> under CC BY NC SA 4.0.
 
-For questions about the task in general, please refer to the original [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408) paper or reach out to Alex Burgoyne directly.
+Original tasks described and tested in [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408).
 
 When using this task, please cite Burgoyne et al. (2023) and this version of the task as follows:
 
@@ -23,6 +23,10 @@ This is a [jsPsych](https://www.jspsych.org/7.3/) implementation of the Squared 
 
 There are two directories: `squared` and `jspsych`. The `squared` directory is the main directory, and it houses the html executable file to be used to run the Squared tasks (i.e., `squared.html`). The `jspsych` directory (v7.3.1) contains all the plugins that are locally referenced in the
 `squared/squared.html` file; these plugins are necessary for the program to work. If the user wants the reference to the plugins to be online instead of local, the user can modify the html file to reference the CDN-hosted scripts online (see documentation on jsPsych website). The advantage of referencing the plugins online is that the user will only need to keep the `squared` directory to run the program successfully; the disadvantage is that the program may not run if the servers are down. To be safer, local reference to the jsPsych plugins is implemented here.
+
+Descriptions in Burgoyne et al. are slightly different from the implementation in the program available on the Engle Lab website, VL decided to stick to Burgoyne et al. description because it gave participants feedback at the end and provided reason for why the correct response was correct
+
+For each task, a 30-second practice block is given, followed by a 90-second main block. For the Stroop squared: Participants have to determine the color of the prompt and click on the word whose meaning corresponds to the prompt's color. For the Flanker squared: Participants are given a choice of two arrow sets and they have to click the arrow set whose center arrow points in the same direction as the flanking arrows in the prompt. For the Simon squared: Participants are shown an arrow prompt at the left or right of the screen, and they have to click on the word that indicates the direction that the arrow prompt is pointing (not its location).
 
 ## Content
 
