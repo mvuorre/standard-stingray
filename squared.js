@@ -9,12 +9,14 @@ var jsPsych = initJsPsych({});
 // Trials are run in the same order for all participants to minimize performance variation due to trial order
 jsPsych.randomization.setSeed('squaredtasks');
 
-// IMPORTANT: THESE ARE THE ONLY VARIABLES THAT SHOULD BE MANUALLY CHANGED (if at all), the rest should be adaptive
-var practice_duration = 30000; // duration of practice
+var debug = jsPsych.data.getURLVariable("debug");
 var main_duration = 90000; // duration of main task
+if (debug) {
+	main_duration = 10000
+}
+var practice_duration = main_duration / 3; // duration of practice
 
-//general variables for use throughout the experiment
-var online = 0; // Numeric: Is task run online? [testing]
+// general variables for use throughout the experiment
 var total_stroop = 0; // track total Stroop score
 var total_flanker = 0; // track total Flanker score
 var total_simon = 0; // track total Simon score
