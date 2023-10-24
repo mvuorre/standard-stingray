@@ -24,7 +24,7 @@ var block_trial_count = 0;
 var practice = 1; // Indicator of whether the trials being shown belong to the practice phase
 var timeout = 0; // Indicator whether trial was responded to when the task timed out
 var timeleft; // Placeholder for the amount of time left for the block
-var block_time_limit; // Placeholder for the timelimit for the block
+var block_time_limit; // Placeholder for the time limit for the block
 var end_timer; // Holder for timeout of task
 var block_start; // Placeholder for time when block started
 var stay = 1; // Indicator of whether participant has indicated that they still want to read the instructions
@@ -38,14 +38,14 @@ var items_simon = Array.from(Array(8).keys()); // Array from 0-7
 function countdown(start, timelimit) {
 
 	var timeleft_bar = document.getElementById("timeleft");
-	var timeleft_width = (timelimit - (Date.now() - start))*100/timelimit;
+	var timeleft_width = (timelimit - (Date.now() - start)) * 100 / timelimit;
 	timeleft_bar.style.width = timeleft_width + "%";
 
 	function shorten_timebar() {
 		if (timeleft_width <= 0) {
 			clearInterval(update_timeleft)
 		} else {
-			timeleft_width -= 10*100/timelimit // 10: time interval set in setInterval;
+			timeleft_width -= 10 * 100 / timelimit // 10: time interval set in setInterval;
 			timeleft_bar.style.width = timeleft_width + "%";
 		}
 	}
@@ -74,7 +74,7 @@ jsPsych.data.addProperties({
 var welcome = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<p style='font-size:25px;'><b>Colors and Arrows Tasks</b></p>" +
-			  "<p style='font-size:25px;'>Click on START to read the instructions.</p>",
+		"<p style='font-size:25px;'>Click on START to read the instructions.</p>",
 	choices: ["START"]
 }
 
@@ -99,22 +99,22 @@ var welcome = {
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_stroop)
 var stimuli_stroop = [
-	{stim: "RED", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 1, condition: 1},
-	{stim: "RED", stimcolor: "#ff0302", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 0, condition: 1},
-	{stim: "BLUE", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 0, condition: 1},
-	{stim: "BLUE", stimcolor: "#0000FF", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 1, condition: 1},
-	{stim: "RED", stimcolor: "#ff0302", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 0, condition: 2},
-	{stim: "RED", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 2},
-	{stim: "BLUE", stimcolor: "#0000FF", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 1, condition: 2},
-	{stim: "BLUE", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 2},
-	{stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 0, condition: 3},
-	{stim: "RED", stimcolor: "#0000FF", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 1, condition: 3},
-	{stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 1, condition: 3},
-	{stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 0, condition: 3},
-	{stim: "RED", stimcolor: "#0000FF", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 1, condition: 4},
-	{stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 4},
-	{stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 0, condition: 4},
-	{stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 4}
+	{ stim: "RED", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 1, condition: 1 },
+	{ stim: "RED", stimcolor: "#ff0302", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 0, condition: 1 },
+	{ stim: "BLUE", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 0, condition: 1 },
+	{ stim: "BLUE", stimcolor: "#0000FF", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 1, condition: 1 },
+	{ stim: "RED", stimcolor: "#ff0302", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 0, condition: 2 },
+	{ stim: "RED", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 2 },
+	{ stim: "BLUE", stimcolor: "#0000FF", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 1, condition: 2 },
+	{ stim: "BLUE", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 2 },
+	{ stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 0, condition: 3 },
+	{ stim: "RED", stimcolor: "#0000FF", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 1, condition: 3 },
+	{ stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 1, condition: 3 },
+	{ stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 0, condition: 3 },
+	{ stim: "RED", stimcolor: "#0000FF", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 1, condition: 4 },
+	{ stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 4 },
+	{ stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 0, condition: 4 },
+	{ stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 4 }
 ]
 
 // 2. Create fixed random order of trials for practice and main phases of task (practice_stroop, main_stroop)
@@ -136,7 +136,7 @@ var instructions_stroop_1 = {
 				<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: #ff0302;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>BLUE<div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Meaning matches top word's color)</div></button></div>`,
 	choices: ["Begin practice"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "stroop";
 	}
 }
@@ -145,10 +145,10 @@ var instructions_stroop_1 = {
 var prepare_practice_stroop = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_stroop + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>" ,
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start practice trials"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "stroop";
 		practice = 1;
@@ -158,14 +158,14 @@ var prepare_practice_stroop = {
 // 3a
 var intro_stroop = {
 	timeline: [instructions_stroop_1, prepare_practice_stroop],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		stay = 1;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
@@ -174,12 +174,14 @@ var intro_stroop = {
 var threetwoone = {
 	timeline: [{
 		type: jsPsychHtmlKeyboardResponse,
-		stimulus: function() { return "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>0</b></span></div></div><div style='height: 89px;'></div>" +
-					"<p style='font-size: 120pt; font-weight: 1000;'>" + jsPsych.timelineVariable("num") + "</p>" },
+		stimulus: function () {
+			return "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>0</b></span></div></div><div style='height: 89px;'></div>" +
+				"<p style='font-size: 120pt; font-weight: 1000;'>" + jsPsych.timelineVariable("num") + "</p>"
+		},
 		choices: "NO_KEYS",
 		trial_duration: 1000
 	}],
-	timeline_variables: [{num: 3}, {num: 2}, {num: 1}]
+	timeline_variables: [{ num: 3 }, { num: 2 }, { num: 1 }]
 }
 
 // 3d.1
@@ -197,7 +199,7 @@ var instructions_stroop_2 = {
 				<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: #ff0302;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>BLUE<div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Meaning matches top word's color)</div></button></div>`,
 	choices: ["I understand"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "stroop";
 	}
 }
@@ -206,10 +208,10 @@ var instructions_stroop_2 = {
 var prepare_main_stroop = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_stroop + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start task"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "stroop";
 		practice = 0;
@@ -220,36 +222,36 @@ var prepare_main_stroop = {
 // 3d
 var premain_stroop = {
 	timeline: [instructions_stroop_2, prepare_main_stroop],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		total_stroop = 0;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
 
 // Function to create display stimulus + countdown bar
-var display_stroop = function(stimulus) {
+var display_stroop = function (stimulus) {
 	var stim = stimuli_stroop[stimulus].stim;
 	var stimcolor = stimuli_stroop[stimulus].stimcolor;
 
 	return "<div style='font-size: 10pt; position: relative; left: 5%; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_stroop + "</b></span></div></div><div style='height: 143px;'></div>" +
-	"<span style='font-size: 54pt; font-weight: 1000; color: " + stimcolor + ";'>" + stim + "</span><p><br></p>"
+		"<span style='font-size: 54pt; font-weight: 1000; color: " + stimcolor + ";'>" + stim + "</span><p><br></p>"
 }
 
 
 // Function to create block of stroop trials
 // 		- stroop: Array containing the indices of stimuli_stroop to be referenced as nth trials for that block
-var createStroopBlock = function(stroop) {
+var createStroopBlock = function (stroop) {
 	var trial_stroop = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_stroop(stroop[block_trial_count]); },
-		choices: function() { return [stimuli_stroop[stroop[block_trial_count]].resp1, stimuli_stroop[stroop[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_stroop(stroop[block_trial_count]); },
+		choices: function () { return [stimuli_stroop[stroop[block_trial_count]].resp1, stimuli_stroop[stroop[block_trial_count]].resp2]; },
+		button_html: function () {
 			var resp1color = stimuli_stroop[stroop[block_trial_count]].resp1color;
 			var resp2color = stimuli_stroop[stroop[block_trial_count]].resp2color;
 
@@ -259,13 +261,13 @@ var createStroopBlock = function(stroop) {
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
 				block_start = Date.now();
 
-				end_timer = setTimeout(function() {
+				end_timer = setTimeout(function () {
 
 					block_trial_count = 0;
 					timeout = 1;
@@ -276,10 +278,10 @@ var createStroopBlock = function(stroop) {
 				}, block_time_limit);
 			}
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 		},
-		on_finish: function(data) {
+		on_finish: function (data) {
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "stroop";
 			data.practice = practice;
@@ -290,12 +292,12 @@ var createStroopBlock = function(stroop) {
 			data.resp1color = stimuli_stroop[stroop[block_trial_count]].resp1color == "#0000FF" ? "blue" : "red";
 			data.resp2 = stimuli_stroop[stroop[block_trial_count]].resp2;
 			data.resp2color = stimuli_stroop[stroop[block_trial_count]].resp2color == "#0000FF" ? "blue" : "red",
-			data.correct_response = stimuli_stroop[stroop[block_trial_count]].correct_response;
+				data.correct_response = stimuli_stroop[stroop[block_trial_count]].correct_response;
 			data.condition = stimuli_stroop[stroop[block_trial_count]].condition;
 			data.accuracy = data.response == stimuli_stroop[stroop[block_trial_count]].correct_response ? 1 : 0;
 			data.timeout = timeout;
 
-			switch(timeout) {
+			switch (timeout) {
 				case 0:
 					total_stroop = data.accuracy == 1 ? total_stroop + 1 : total_stroop - 1;
 					break;
@@ -310,9 +312,9 @@ var createStroopBlock = function(stroop) {
 
 	var feedback_stroop = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_stroop(stroop[block_trial_count]); },
-		choices: function() { return [stimuli_stroop[stroop[block_trial_count]].resp1, stimuli_stroop[stroop[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_stroop(stroop[block_trial_count]); },
+		choices: function () { return [stimuli_stroop[stroop[block_trial_count]].resp1, stimuli_stroop[stroop[block_trial_count]].resp2]; },
+		button_html: function () {
 			var resp1color = stimuli_stroop[stroop[block_trial_count]].resp1color;
 			var resp2color = stimuli_stroop[stroop[block_trial_count]].resp2color;
 			var resp = jsPsych.data.get().last(1).values()[0].response;
@@ -335,10 +337,10 @@ var createStroopBlock = function(stroop) {
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			block_trial_count++
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 
 		},
@@ -348,7 +350,7 @@ var createStroopBlock = function(stroop) {
 
 	var block_stroop = {
 		timeline: [trial_stroop, feedback_stroop],
-		loop_function: function() {
+		loop_function: function () {
 			return true;
 		}
 	}
@@ -363,10 +365,10 @@ block_stroop_main = createStroopBlock(main_stroop);
 // 3g
 var conclusion_stroop = {
 	type: jsPsychHtmlButtonResponse,
-	stimulus: function() {return `<p>You earned a total of ` + total_stroop + ` points for that task. Great job!</p><p>Click on NEXT TASK to move on.</p>`; },
+	stimulus: function () { return `<p>You earned a total of ` + total_stroop + ` points for that task. Great job!</p><p>Click on NEXT TASK to move on.</p>`; },
 	choices: ["NEXT TASK"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_start: function() {
+	on_start: function () {
 		// Calculate the following metrics separately for practice trials and main trials, filtering out the trial where the block timed out:
 		//     - score_final: final score of the participant at the end of the block
 		//	   - meanrt_final: mean RT of all trials across the block (regardless of accuracy)
@@ -377,32 +379,32 @@ var conclusion_stroop = {
 		//          4. fully incongruent
 		//	   - meanrt_x: mean RT of all trials for x condition (regardless of accuracy)
 
-		jsPsych.data.get().filter({task: "stroop", practice: 1}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "stroop", practice: 1, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "stroop", practice: 1, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "stroop", practice: 1, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "stroop", practice: 1 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "stroop", practice: 1, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "stroop", practice: 1, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "stroop", practice: 1, condition: 4, timeout: 0 }).select("rt").mean()
 		})
 
-		jsPsych.data.get().filter({task: "stroop", practice: 0}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "stroop", practice: 0, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "stroop", practice: 0, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "stroop", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "stroop", practice: 0 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "stroop", practice: 0, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "stroop", practice: 0, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "stroop", practice: 0, condition: 4, timeout: 0 }).select("rt").mean()
 		})
-		
+
 		clearTimeout(end_timer);
 	}
 }
@@ -442,22 +444,22 @@ const ml_fr = "assets/ml_fr.PNG";
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_flanker)
 var stimuli_flanker = [
-	{stim: al, stimsign: "<<<<<", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 1, condition: 1},
-	{stim: al, stimsign: "<<<<<", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 0, condition: 1},
-	{stim: ar, stimsign: ">>>>>", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 0, condition: 1},
-	{stim: ar, stimsign: ">>>>>", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 1, condition: 1},
-	{stim: al, stimsign: "<<<<<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 2},
-	{stim: al, stimsign: "<<<<<", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 1, condition: 2},
-	{stim: ar, stimsign: ">>>>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 2},
-	{stim: ar, stimsign: ">>>>>", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 0, condition: 2},
-	{stim: mr_fl, stimsign: "<<><<", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 0, condition: 3},
-	{stim: mr_fl, stimsign: "<<><<", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 1, condition: 3},
-	{stim: ml_fr, stimsign: ">><>>", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 1, condition: 3},
-	{stim: ml_fr, stimsign: ">><>>", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 0, condition: 3},
-	{stim: mr_fl, stimsign: "<<><<", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 1, condition: 4},
-	{stim: mr_fl, stimsign: "<<><<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 4},
-	{stim: ml_fr, stimsign: ">><>>", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 0, condition: 4},
-	{stim: ml_fr, stimsign: ">><>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 4}
+	{ stim: al, stimsign: "<<<<<", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 1, condition: 1 },
+	{ stim: al, stimsign: "<<<<<", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 0, condition: 1 },
+	{ stim: ar, stimsign: ">>>>>", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 0, condition: 1 },
+	{ stim: ar, stimsign: ">>>>>", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 1, condition: 1 },
+	{ stim: al, stimsign: "<<<<<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 2 },
+	{ stim: al, stimsign: "<<<<<", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 1, condition: 2 },
+	{ stim: ar, stimsign: ">>>>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 2 },
+	{ stim: ar, stimsign: ">>>>>", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 0, condition: 2 },
+	{ stim: mr_fl, stimsign: "<<><<", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 0, condition: 3 },
+	{ stim: mr_fl, stimsign: "<<><<", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 1, condition: 3 },
+	{ stim: ml_fr, stimsign: ">><>>", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 1, condition: 3 },
+	{ stim: ml_fr, stimsign: ">><>>", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 0, condition: 3 },
+	{ stim: mr_fl, stimsign: "<<><<", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 1, condition: 4 },
+	{ stim: mr_fl, stimsign: "<<><<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 4 },
+	{ stim: ml_fr, stimsign: ">><>>", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 0, condition: 4 },
+	{ stim: ml_fr, stimsign: ">><>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 4 }
 ]
 
 // 2. Create fixed random order of trials for practice and main phases of task (practice_flanker, main_flanker)
@@ -481,7 +483,7 @@ var instructions_flanker_1 = {
 				<button class="choiceStyle" style="font-family: Open Sans;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div><img src='` + ml_fr + `' width='290'><div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Inside arrow is left)</div></button></div>`,
 	choices: ["Begin practice"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "flanker";
 	}
 }
@@ -490,10 +492,10 @@ var instructions_flanker_1 = {
 var prepare_practice_flanker = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_flanker + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start practice trials"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "flanker";
 		practice = 1;
@@ -503,14 +505,14 @@ var prepare_practice_flanker = {
 // 3a
 var intro_flanker = {
 	timeline: [instructions_flanker_1, prepare_practice_flanker],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		stay = 1;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
@@ -531,7 +533,7 @@ var instructions_flanker_2 = {
 				<button class="choiceStyle" style="font-family: Open Sans;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div><img src='` + ml_fr + `' width='290'><div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Inside arrow is left)</div></button></div>`,
 	choices: ["I understand"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "flanker";
 	}
 }
@@ -540,10 +542,10 @@ var instructions_flanker_2 = {
 var prepare_main_flanker = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_flanker + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start task"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "flanker";
 		practice = 0;
@@ -554,48 +556,48 @@ var prepare_main_flanker = {
 // 3d
 var premain_flanker = {
 	timeline: [instructions_flanker_2, prepare_main_flanker],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		total_flanker = 0;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
 
 // Function to create display stimulus + countdown bar
-var display_flanker = function(stimulus) {
+var display_flanker = function (stimulus) {
 	var stim = stimuli_flanker[stimulus].stim;
 
 	return "<div style='font-size: 10pt; position: relative; left: 5%; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_flanker + "</b></span></div></div><div style='height: 130px;'></div>" +
-	"<img src='" + stim + "' width='290'><p><br></p>"
+		"<img src='" + stim + "' width='290'><p><br></p>"
 }
 
 
 // Function to create block of flanker trials
 // 		- flanker: Array containing the indices of stimuli_flanker to be referenced as nth trials for that block
-var createFlankerBlock = function(flanker) {
+var createFlankerBlock = function (flanker) {
 	var trial_flanker = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_flanker(flanker[block_trial_count]); },
-		choices: function() { return [stimuli_flanker[flanker[block_trial_count]].resp1, stimuli_flanker[flanker[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_flanker(flanker[block_trial_count]); },
+		choices: function () { return [stimuli_flanker[flanker[block_trial_count]].resp1, stimuli_flanker[flanker[block_trial_count]].resp2]; },
+		button_html: function () {
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div><img src=%choice% width="290"></button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div><img src=%choice% width="290"></button>'
 
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
 				block_start = Date.now();
 
-				end_timer = setTimeout(function() {
+				end_timer = setTimeout(function () {
 
 					block_trial_count = 0;
 					timeout = 1;
@@ -606,10 +608,10 @@ var createFlankerBlock = function(flanker) {
 				}, block_time_limit);
 			}
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 		},
-		on_finish: function(data) {
+		on_finish: function (data) {
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "flanker";
 			data.practice = practice;
@@ -622,7 +624,7 @@ var createFlankerBlock = function(flanker) {
 			data.accuracy = data.response == stimuli_flanker[flanker[block_trial_count]].correct_response ? 1 : 0;
 			data.timeout = timeout;
 
-			switch(timeout) {
+			switch (timeout) {
 				case 0:
 					total_flanker = data.accuracy == 1 ? total_flanker + 1 : total_flanker - 1;
 					break;
@@ -637,9 +639,9 @@ var createFlankerBlock = function(flanker) {
 
 	var feedback_flanker = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_flanker(flanker[block_trial_count]); },
-		choices: function() { return [stimuli_flanker[flanker[block_trial_count]].resp1, stimuli_flanker[flanker[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_flanker(flanker[block_trial_count]); },
+		choices: function () { return [stimuli_flanker[flanker[block_trial_count]].resp1, stimuli_flanker[flanker[block_trial_count]].resp2]; },
+		button_html: function () {
 			var resp = jsPsych.data.get().last(1).values()[0].response;
 			var correct_response = jsPsych.data.get().last(1).values()[0].correct_response;
 
@@ -660,10 +662,10 @@ var createFlankerBlock = function(flanker) {
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			block_trial_count++
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 		},
 		trial_duration: 500,
@@ -672,7 +674,7 @@ var createFlankerBlock = function(flanker) {
 
 	var block_flanker = {
 		timeline: [trial_flanker, feedback_flanker],
-		loop_function: function() {
+		loop_function: function () {
 			return true;
 		}
 	}
@@ -687,10 +689,10 @@ block_flanker_main = createFlankerBlock(main_flanker);
 // 3g
 var conclusion_flanker = {
 	type: jsPsychHtmlButtonResponse,
-	stimulus: function() {return `<p>You earned a total of ` + total_flanker + ` points for that task. Great job!</p><p>Click on NEXT TASK to move on.</p>`; },
+	stimulus: function () { return `<p>You earned a total of ` + total_flanker + ` points for that task. Great job!</p><p>Click on NEXT TASK to move on.</p>`; },
 	choices: ["NEXT TASK"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_start: function() {
+	on_start: function () {
 		// Calculate the following metrics separately for practice trials and main trials, filtering out the trial where the block timed out:
 		//     - score_final: final score of the participant at the end of the block
 		//	   - meanrt_final: mean RT of all trials across the block (regardless of accuracy)
@@ -701,30 +703,30 @@ var conclusion_flanker = {
 		//          4. fully incongruent
 		//	   - meanrt_x: mean RT of all trials for x condition (regardless of accuracy)
 
-		jsPsych.data.get().filter({task: "flanker", practice: 1}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "flanker", practice: 1, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "flanker", practice: 1, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "flanker", practice: 1, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "flanker", practice: 1 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "flanker", practice: 1, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "flanker", practice: 1, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "flanker", practice: 1, condition: 4, timeout: 0 }).select("rt").mean()
 		})
 
-		jsPsych.data.get().filter({task: "flanker", practice: 0}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "flanker", practice: 0, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "flanker", practice: 0, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "flanker", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "flanker", practice: 0 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "flanker", practice: 0, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "flanker", practice: 0, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "flanker", practice: 0, condition: 4, timeout: 0 }).select("rt").mean()
 		})
 
 		clearTimeout(end_timer);
@@ -732,7 +734,7 @@ var conclusion_flanker = {
 }
 
 // Put timeline together
-var flanker_task = {timeline: [intro_flanker, threetwoone, block_flanker_practice, premain_flanker, threetwoone, block_flanker_main, conclusion_flanker]};
+var flanker_task = { timeline: [intro_flanker, threetwoone, block_flanker_practice, premain_flanker, threetwoone, block_flanker_main, conclusion_flanker] };
 
 ///////////////////////////////////////////////
 ///////////////// SIMON /////////////////////
@@ -758,14 +760,14 @@ const larr = "assets/larr.PNG";
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_simon)
 var stimuli_simon = [
-	{stim: larr, stimsign: "<", loc: "left", resp1: "LEFT", resp2: "RIGHT", correct_response: 0, condition: 1},
-	{stim: rarr, stimsign: ">", loc: "right", resp1: "LEFT", resp2: "RIGHT", correct_response: 1, condition: 1},
-	{stim: larr, stimsign: "<", loc: "left", resp1: "RIGHT", resp2: "LEFT", correct_response: 1, condition: 2},
-	{stim: rarr, stimsign: ">", loc: "right", resp1: "RIGHT", resp2: "LEFT", correct_response: 0, condition: 2},
-	{stim: larr, stimsign: "<", loc: "right", resp1: "LEFT", resp2: "RIGHT", correct_response: 0, condition: 3},
-	{stim: rarr, stimsign: ">", loc: "left", resp1: "LEFT", resp2: "RIGHT", correct_response: 1, condition: 3},
-	{stim: larr, stimsign: "<", loc: "right", resp1: "RIGHT", resp2: "LEFT", correct_response: 1, condition: 4},
-	{stim: rarr, stimsign: ">", loc: "left", resp1: "RIGHT", resp2: "LEFT", correct_response: 0, condition: 4}
+	{ stim: larr, stimsign: "<", loc: "left", resp1: "LEFT", resp2: "RIGHT", correct_response: 0, condition: 1 },
+	{ stim: rarr, stimsign: ">", loc: "right", resp1: "LEFT", resp2: "RIGHT", correct_response: 1, condition: 1 },
+	{ stim: larr, stimsign: "<", loc: "left", resp1: "RIGHT", resp2: "LEFT", correct_response: 1, condition: 2 },
+	{ stim: rarr, stimsign: ">", loc: "right", resp1: "RIGHT", resp2: "LEFT", correct_response: 0, condition: 2 },
+	{ stim: larr, stimsign: "<", loc: "right", resp1: "LEFT", resp2: "RIGHT", correct_response: 0, condition: 3 },
+	{ stim: rarr, stimsign: ">", loc: "left", resp1: "LEFT", resp2: "RIGHT", correct_response: 1, condition: 3 },
+	{ stim: larr, stimsign: "<", loc: "right", resp1: "RIGHT", resp2: "LEFT", correct_response: 1, condition: 4 },
+	{ stim: rarr, stimsign: ">", loc: "left", resp1: "RIGHT", resp2: "LEFT", correct_response: 0, condition: 4 }
 ]
 
 // 2. Create fixed random order of trials for practice and main phases of task (practice_simon, main_simon)
@@ -786,7 +788,7 @@ var instructions_simon_1 = {
 				<button class="choiceStyle" style="font-family: Open Sans; color: white; font-weight: 1000;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>LEFT<div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Meaning matches direction of arrow)</div></button></div>`,
 	choices: ["Begin practice"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "simon";
 	}
 }
@@ -795,10 +797,10 @@ var instructions_simon_1 = {
 var prepare_practice_simon = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_simon + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start practice trials"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "simon";
 		practice = 1;
@@ -808,14 +810,14 @@ var prepare_practice_simon = {
 // 3a
 var intro_simon = {
 	timeline: [instructions_simon_1, prepare_practice_simon],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		stay = 1;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
@@ -835,7 +837,7 @@ var instructions_simon_2 = {
 				<button class="choiceStyle" style="font-family: Open Sans; color: white; font-weight: 1000;"><div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>LEFT<div style="font-size: 9pt; color: white; font-weight: normal;">RIGHT ANSWER<br>(Meaning matches direction of arrow)</div></button></div>`,
 	choices: ["I understand"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		data.task = "simon";
 	}
 }
@@ -844,10 +846,10 @@ var instructions_simon_2 = {
 var prepare_main_simon = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: "<div style='font-size: 10pt; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_simon + "</b></span></div></div><div style='height: 150px;'></div>" +
-				"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
+		"<p style='font-size: 54pt; font-weight: 1000; color: black;'>_</p>",
 	choices: ["Review instructions again", "Start task"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_finish: function(data) {
+	on_finish: function (data) {
 		stay = data.response == 0 ? 1 : 0;
 		data.task = "simon";
 		practice = 0;
@@ -858,49 +860,49 @@ var prepare_main_simon = {
 // 3d
 var premain_simon = {
 	timeline: [instructions_simon_2, prepare_main_simon],
-	on_timeline_start: function() {
+	on_timeline_start: function () {
 		total_simon = 0;
 		timeout = 0;
 	},
-	loop_function: function() {
+	loop_function: function () {
 		return stay;
 	},
-	on_timeline_end: function() {
+	on_timeline_end: function () {
 		stay = 1;
 	}
 }
 
 // Function to create display stimulus + countdown bar
-var display_simon = function(stimulus) {
+var display_simon = function (stimulus) {
 	var stim = stimuli_simon[stimulus].stim;
 	var loc = stimuli_simon[stimulus].loc;
 
 	return "<div style='font-size: 10pt; position: relative; left: 5%; display: flex; align-items: center;'>Time left<div id = 'countdownbar' style = 'margin: 0px 25px;'><div id = 'timeleft'></div></div><div style='align-self: baseline;'>Score<br><span style='font-size:27pt;'><b>" + total_simon + "</b></span></div></div><div style='height: 128px;'></div>" +
-	"<span style='display: flex; justify-content: " + loc + ";'><img src='" + stim + "' height='70'></span><p></p>" +
-	"<div style='height: 50px;'></div>"
+		"<span style='display: flex; justify-content: " + loc + ";'><img src='" + stim + "' height='70'></span><p></p>" +
+		"<div style='height: 50px;'></div>"
 }
 
 // Function to create block of simon trials
 // 		- simon: Array containing the indices of stimuli_simon to be referenced as nth trials for that block
-var createSimonBlock = function(simon) {
+var createSimonBlock = function (simon) {
 	var trial_simon = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_simon(simon[block_trial_count]); },
-		choices: function() { return [stimuli_simon[simon[block_trial_count]].resp1, stimuli_simon[simon[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_simon(simon[block_trial_count]); },
+		choices: function () { return [stimuli_simon[simon[block_trial_count]].resp1, stimuli_simon[simon[block_trial_count]].resp2]; },
+		button_html: function () {
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
 
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
 				block_start = Date.now();
 
-				end_timer = setTimeout(function() {
+				end_timer = setTimeout(function () {
 
 					block_trial_count = 0;
 					timeout = 1;
@@ -911,10 +913,10 @@ var createSimonBlock = function(simon) {
 				}, block_time_limit);
 			}
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 		},
-		on_finish: function(data) {
+		on_finish: function (data) {
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "simon";
 			data.practice = practice;
@@ -928,7 +930,7 @@ var createSimonBlock = function(simon) {
 			data.accuracy = data.response == stimuli_simon[simon[block_trial_count]].correct_response ? 1 : 0;
 			data.timeout = timeout;
 
-			switch(timeout) {
+			switch (timeout) {
 				case 0:
 					total_simon = data.accuracy == 1 ? total_simon + 1 : total_simon - 1;
 					break;
@@ -943,9 +945,9 @@ var createSimonBlock = function(simon) {
 
 	var feedback_simon = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: function() { return display_simon(simon[block_trial_count]); },
-		choices: function() { return [stimuli_simon[simon[block_trial_count]].resp1, stimuli_simon[simon[block_trial_count]].resp2]; },
-		button_html: function() {
+		stimulus: function () { return display_simon(simon[block_trial_count]); },
+		choices: function () { return [stimuli_simon[simon[block_trial_count]].resp1, stimuli_simon[simon[block_trial_count]].resp2]; },
+		button_html: function () {
 			var resp = jsPsych.data.get().last(1).values()[0].response;
 			var correct_response = jsPsych.data.get().last(1).values()[0].correct_response;
 
@@ -966,10 +968,10 @@ var createSimonBlock = function(simon) {
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
-		on_start: function() {
+		on_start: function () {
 			block_trial_count++
 		},
-		on_load: function() {
+		on_load: function () {
 			countdown(block_start, block_time_limit);
 
 		},
@@ -979,7 +981,7 @@ var createSimonBlock = function(simon) {
 
 	var block_simon = {
 		timeline: [trial_simon, feedback_simon],
-		loop_function: function() {
+		loop_function: function () {
 			return true;
 		}
 	}
@@ -994,10 +996,10 @@ block_simon_main = createSimonBlock(main_simon);
 // 3g
 var conclusion_simon = {
 	type: jsPsychHtmlButtonResponse,
-	stimulus: function() {return `<p>You earned a total of ` + total_simon + ` points for that task. Great job!</p><p>Click on NEXT to see all your scores.</p>`; },
+	stimulus: function () { return `<p>You earned a total of ` + total_simon + ` points for that task. Great job!</p><p>Click on NEXT to see all your scores.</p>`; },
 	choices: ["NEXT"],
 	button_html: `<div style='height: 70px;'></div><button class="defaultButton">%choice%</button>`,
-	on_start: function() {
+	on_start: function () {
 		// Calculate the following metrics separately for practice trials and main trials, filtering out the trial where the block timed out:
 		//     - score_final: final score of the participant at the end of the block
 		//	   - meanrt_final: mean RT of all trials across the block (regardless of accuracy)
@@ -1008,30 +1010,30 @@ var conclusion_simon = {
 		//          4. fully incongruent
 		//	   - meanrt_x: mean RT of all trials for x condition (regardless of accuracy)
 
-		jsPsych.data.get().filter({task: "simon", practice: 1}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "simon", practice: 1, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "simon", practice: 1, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 1, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 1, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 1, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 1, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "simon", practice: 1, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "simon", practice: 1 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "simon", practice: 1, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "simon", practice: 1, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "simon", practice: 1, condition: 4, timeout: 0 }).select("rt").mean()
 		})
 
-		jsPsych.data.get().filter({task: "simon", practice: 0}).addToAll({
-			score_final: jsPsych.data.get().filter({task: "simon", practice: 0, timeout: 0}).last(1).values()[0].score_after_trial,
-			meanrt_final: jsPsych.data.get().filter({task: "simon", practice: 0, timeout: 0}).select("rt").mean(),
-			score_1: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 1, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 0, condition: 1, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_1: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 1, timeout: 0}).select("rt").mean(),
-			score_2: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 2, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 0, condition: 2, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_2: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 2, timeout: 0}).select("rt").mean(),
-			score_3: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 3, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 0, condition: 3, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_3: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 3, timeout: 0}).select("rt").mean(),
-			score_4: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 4, accuracy: 1, timeout: 0}).select("accuracy").count() - jsPsych.data.get().filter({task: "simon", practice: 0, condition: 4, accuracy: 0, timeout: 0}).select("accuracy").count(),
-			meanrt_4: jsPsych.data.get().filter({task: "simon", practice: 0, condition: 4, timeout: 0}).select("rt").mean()
+		jsPsych.data.get().filter({ task: "simon", practice: 0 }).addToAll({
+			score_final: jsPsych.data.get().filter({ task: "simon", practice: 0, timeout: 0 }).last(1).values()[0].score_after_trial,
+			meanrt_final: jsPsych.data.get().filter({ task: "simon", practice: 0, timeout: 0 }).select("rt").mean(),
+			score_1: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 1, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 1, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_1: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 1, timeout: 0 }).select("rt").mean(),
+			score_2: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 2, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 2, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_2: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 2, timeout: 0 }).select("rt").mean(),
+			score_3: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 3, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 3, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_3: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 3, timeout: 0 }).select("rt").mean(),
+			score_4: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 4, accuracy: 1, timeout: 0 }).select("accuracy").count() - jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 4, accuracy: 0, timeout: 0 }).select("accuracy").count(),
+			meanrt_4: jsPsych.data.get().filter({ task: "simon", practice: 0, condition: 4, timeout: 0 }).select("rt").mean()
 		})
 
 		clearTimeout(end_timer);
@@ -1039,7 +1041,7 @@ var conclusion_simon = {
 }
 
 // Put timeline together
-var simon_task = {timeline: [intro_simon, threetwoone, block_simon_practice, premain_simon, threetwoone, block_simon_main, conclusion_simon]};
+var simon_task = { timeline: [intro_simon, threetwoone, block_simon_practice, premain_simon, threetwoone, block_simon_main, conclusion_simon] };
 
 /////////////////////////////////////////
 // FINALIZE EXPERIMENT CONTEXT  /////////
@@ -1048,21 +1050,21 @@ var simon_task = {timeline: [intro_simon, threetwoone, block_simon_practice, pre
 // Ending screen
 var conclusion = {
 	type: jsPsychHtmlKeyboardResponse,
-    stimulus: function() { 
-			return '<p style="font-size:25px;"> You earned the following points in the three tasks: <br>' +
-	          '<p> Colors Task: ' + total_stroop + ' points</p>' +
-			  '<p> Multiple Arrows Task: ' + total_flanker + ' points</p>' +
-			  '<p> Single Arrow Task: ' + total_simon + ' points</p>' +
-			  '<p style="font-size:25px;">You are now finished with this set of tasks.</p>' +
-              '<p style="font-size:25px;"><b><a href="https://app.prolific.com/submissions/complete?cc=C1BR71DH">Click here to return to Prolific and complete the study</a></b>.</p>' 
-			},
-			choices: "NO_KEYS"
+	stimulus: function () {
+		return '<p style="font-size:25px;"> You earned the following points in the three tasks: <br>' +
+			'<p> Colors Task: ' + total_stroop + ' points</p>' +
+			'<p> Multiple Arrows Task: ' + total_flanker + ' points</p>' +
+			'<p> Single Arrow Task: ' + total_simon + ' points</p>' +
+			'<p style="font-size:25px;">You are now finished with this set of tasks.</p>' +
+			'<p style="font-size:25px;"><b><a href="https://app.prolific.com/submissions/complete?cc=C1BR71DH">Click here to return to Prolific and complete the study</a></b>.</p>'
+	},
+	choices: "NO_KEYS"
 }
 
 var exit_fullscreen = {
 	type: jsPsychFullscreen,
 	fullscreen_mode: false
-  }
+}
 
 
 // PUTTING IT ALL TOGETHER
@@ -1079,32 +1081,32 @@ const save_data_stroop = {
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
 	filename: `$stroop-${pid}-(${now_iso}).csv`,
-	data_string: ()=> jsPsych.data.get().filter({task: "stroop"}).csv()
+	data_string: () => jsPsych.data.get().filter({ task: "stroop" }).csv()
 };
 const save_data_flanker = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
 	filename: `flanker-${pid}-(${now_iso}).csv`,
-	data_string: ()=> jsPsych.data.get().filter({task: "flanker"}).csv()
+	data_string: () => jsPsych.data.get().filter({ task: "flanker" }).csv()
 };
 const save_data_simon = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
 	filename: `simon-${pid}-(${now_iso}).csv`,
-	data_string: ()=> jsPsych.data.get().filter({task: "simon"}).csv()
+	data_string: () => jsPsych.data.get().filter({ task: "simon" }).csv()
 };
 
 timeline.push(
-	preload, 
-	welcome, 
-	enter_fullscreen, 
-	stroop_task, 
+	preload,
+	welcome,
+	enter_fullscreen,
+	stroop_task,
 	save_data_stroop,
-	flanker_task, 
+	flanker_task,
 	save_data_flanker,
-	simon_task, 
+	simon_task,
 	save_data_simon,
 	exit_fullscreen,
 	conclusion
