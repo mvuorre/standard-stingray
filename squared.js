@@ -1047,20 +1047,21 @@ var simon_task = {timeline: [intro_simon, threetwoone, block_simon_practice, pre
 
 // Ending screen
 var conclusion = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: function() { return '<p style="font-size:25px;"> You earned the following points in the three tasks: <br>' +
+	type: jsPsychHtmlKeyboardResponse,
+    stimulus: function() { 
+			return '<p style="font-size:25px;"> You earned the following points in the three tasks: <br>' +
 	          '<p> Colors Task: ' + total_stroop + ' points</p>' +
 			  '<p> Multiple Arrows Task: ' + total_flanker + ' points</p>' +
 			  '<p> Single Arrow Task: ' + total_simon + ' points</p>' +
 			  '<p style="font-size:25px;">You are now finished with this set of tasks.</p>' +
-              '<p style="font-size:25px;"><b> Press any key to exit.</b></p>' }
+              '<p style="font-size:25px;"><b><a href="https://app.prolific.com/submissions/complete?cc=C1BR71DH">Click here to return to Prolific and complete the study</a></b>.</p>' 
+			},
+			choices: "NO_KEYS"
 }
 
 var exit_fullscreen = {
 	type: jsPsychFullscreen,
-	fullscreen_mode: false,
-	delay_after: 0,
-	on_finish: function(){jsPsych.endExperiment();}
+	fullscreen_mode: false
   }
 
 
@@ -1105,8 +1106,8 @@ timeline.push(
 	save_data_flanker,
 	simon_task, 
 	save_data_simon,
-	conclusion, 
-	exit_fullscreen
+	exit_fullscreen,
+	conclusion
 );
 
 jsPsych.run(timeline);
