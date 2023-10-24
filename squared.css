@@ -1,5 +1,4 @@
 p {
-    /* font-family: Arial; */
     font-size: 25px
 }
 
@@ -18,7 +17,6 @@ body {
     top: 10px;
     margin: auto;
     display: inline-block;
-
 }
 
 #timeleft {
@@ -36,12 +34,8 @@ body {
 
 .choiceStyle {
     background-color: black;
-    /* border: 2px solid white; */
     width: 305px;
     /* 200px for stroop; 350px for flanker */
-    ;
-    /* color: white; 
-	padding: 5px 10px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -58,7 +52,6 @@ body {
     font-family: Open Sans;
     font-weight: 700;
     border: 2px solid #dddddd;
-
 }
 
 .defaultButton:hover,
