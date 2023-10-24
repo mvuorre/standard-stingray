@@ -1,23 +1,12 @@
 # standard-stingray
 
-Cognitive testing battery in jsPsych, forked from <https://github.com/vrtliceralde/squared_jspsych> under CC BY NC SA 4.0.
+Squared tasks of executive attention, including the short versions of Stroop, Flanker, and Simon tasks as described and tested in Burgoyne et al. ([2023](https://doi.org/10.1037/xge0001408), [OSF](https://osf.io/7q598/)). This JavaScript implementation (using the [jsPsych](https://www.jspsych.org/) library) is a fork from Liceralde & Burgoyne ([2023](https://github.com/vrtliceralde/squared_jspsych)) under CC BY NC SA 4.0. 
 
-Original tasks described and tested in [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408). Citation for the original jsPsych implementation:
+- Repo: <https://github.com/digital-wellbeing/standard-stingray>
+- Live task: <https://digital-wellbeing.github.io/standard-stingray>
+- Data output: <https://osf.io/cvnm8/>
 
-Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.8313315
-
-```
-@misc{liceralde23squared,
-  author = {Van Rynald T. Liceralde and Alexander P. Burgoyne},
-  year = {2023},
-  title = {Squared tasks of attention control for {jsPsych}},
-  howpublished = {\url{https://doi.org/10.5281/zenodo.8313315}}
-}
-```
-
-## Description 
-
-This is a [jsPsych](https://www.jspsych.org/7.3/) implementation of the Squared tasks of executive attention that were developed by [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408) ([Engle Lab Website](https://englelab.gatech.edu/attentioncontroltasks); [OSF](https://osf.io/7q598/)).
+The task runs in a browser, and saves data to the OSF using [DataPipe](https://pipe.jspsych.org/). For live runs, please use the `pid` URL variable to indicate participants (e.g. `https://digital-wellbeing.github.io/standard-stingray/index.html?pid=participant_id_from_survey_platform`.)
 
 Descriptions in Burgoyne et al. are slightly different from the implementation in the program available on the Engle Lab website, VL decided to stick to Burgoyne et al. description because it gave participants feedback at the end and provided reason for why the correct response was correct
 
@@ -98,3 +87,38 @@ The following variables are included in the output of the Squared tasks from the
 2. ***The output has blank rows every after response. What are those blank rows for?***
 
    The online implementations of the task record every single event that happens to the screen or internally. Those blank rows represent when feedback is shown to the participant (correct or incorrect) and thus no response is collected, leaving many of the variables blank. Those blank rows can be easily filtered out.
+
+# Citation
+
+Original article describing the short Stroop, Flanker, and Simon tasks:
+
+```
+@article{burgoyneNatureMeasurementAttention2023,
+  title = {Nature and Measurement of Attention Control.},
+  author = {Burgoyne, Alexander P. and Tsukahara, Jason S. and Mashburn, Cody A. and Pak, Richard and Engle, Randall W.},
+  date = {2023-08},
+  journaltitle = {Journal of Experimental Psychology: General},
+  shortjournal = {Journal of Experimental Psychology: General},
+  volume = {152},
+  number = {8},
+  pages = {2369--2402},
+  issn = {1939-2222, 0096-3445},
+  doi = {10.1037/xge0001408},
+  url = {http://doi.apa.org/getdoi.cfm?doi=10.1037/xge0001408}
+}
+```
+
+Original JavaScript implementation:
+
+```
+@misc{liceralde23squared,
+  author = {Van Rynald T. Liceralde and Alexander P. Burgoyne},
+  year = {2023},
+  title = {Squared tasks of attention control for {jsPsych}},
+  howpublished = {\url{https://doi.org/10.5281/zenodo.8313315}}
+}
+```
+
+This fork:
+
+Just link to the GitHub repo (<https://github.com/digital-wellbeing/standard-stingray>).
