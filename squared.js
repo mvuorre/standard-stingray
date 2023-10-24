@@ -1080,7 +1080,7 @@ const save_data_stroop = {
 	type: jsPsychPipe,
 	action: "save",
 	experiment_id: "5IbiiwM4I33E",
-	filename: `$stroop-${pid}-(${now_iso}).csv`,
+	filename: `stroop-${pid}-(${now_iso}).csv`,
 	data_string: () => jsPsych.data.get().filter({ task: "stroop" }).csv()
 };
 const save_data_flanker = {
