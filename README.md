@@ -2,11 +2,8 @@
 
 Squared tasks of executive attention, including the short versions of Stroop, Flanker, and Simon tasks as described and tested in Burgoyne et al. ([2023](https://doi.org/10.1037/xge0001408), [OSF](https://osf.io/7q598/)). This JavaScript implementation (using the [jsPsych](https://www.jspsych.org/) library) is a fork from Liceralde & Burgoyne ([2023](https://github.com/vrtliceralde/squared_jspsych)) under CC BY NC SA 4.0. 
 
-- Repo: <https://github.com/digital-wellbeing/standard-stingray>
-- Live task: <https://digital-wellbeing.github.io/standard-stingray>
-- Data output: <https://osf.io/cvnm8/>
-
-The task runs in a browser, and saves data to the OSF using [DataPipe](https://pipe.jspsych.org/). For live runs, please use the `pid` URL variable to indicate participants (e.g. `https://digital-wellbeing.github.io/standard-stingray/index.html?pid=participant_id_from_survey_platform`.)
+- Repo: <https://github.com/mvuorre/standard-stingray>
+- Live task: <https://mvuorre.github.io/standard-stingray>
 
 Descriptions in Burgoyne et al. are slightly different from the implementation in the program available on the Engle Lab website, VL decided to stick to Burgoyne et al. description because it gave participants feedback at the end and provided reason for why the correct response was correct
 
@@ -14,9 +11,7 @@ For each task, a 30-second practice block is given, followed by a 90-second main
 
 ## Output
 
-After each task (Stroop, Flanker, Simon), a .csv file is saved to OSF
-
-All `.csv` files contain the following variables:
+All data files contain the following variables (data collection is now disabled):
 
 | Variable | Type | Description |
 | -------- | ---- | ----------- |
@@ -121,4 +116,4 @@ Original JavaScript implementation:
 
 This fork:
 
-Just link to the GitHub repo (<https://github.com/digital-wellbeing/standard-stingray>).
+Just link to the GitHub repo (<https://github.com/mvuorre/standard-stingray>).
