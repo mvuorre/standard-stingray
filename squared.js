@@ -1055,8 +1055,8 @@ var conclusion = {
 			'<p> Colors Task: ' + total_stroop + ' points</p>' +
 			'<p> Multiple Arrows Task: ' + total_flanker + ' points</p>' +
 			'<p> Single Arrow Task: ' + total_simon + ' points</p>' +
-			'<p style="font-size:25px;">You are now finished with this set of tasks.</p>' +
-			'<p style="font-size:25px;"><b><a href="https://app.prolific.com/submissions/complete?cc=C1BR71DH">Click here to return to Prolific and complete the study</a></b>.</p>'
+			'<p style="font-size:25px;">You are now finished with this set of tasks.</p>'
+			// '<p style="font-size:25px;"><b><a href="https://app.prolific.com/submissions/complete?cc=C1BR71DH">Click here to return to Prolific and complete the study</a></b>.</p>'
 	},
 	choices: "NO_KEYS"
 }
@@ -1103,11 +1103,11 @@ timeline.push(
 	welcome,
 	enter_fullscreen,
 	stroop_task,
-	save_data_stroop,
+	// save_data_stroop,
 	flanker_task,
-	save_data_flanker,
+	// save_data_flanker,
 	simon_task,
-	save_data_simon,
+	// save_data_simon,
 	exit_fullscreen,
 	conclusion
 );
